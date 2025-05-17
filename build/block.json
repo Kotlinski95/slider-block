@@ -15,11 +15,39 @@
       "type": "boolean",
       "default": true
     },
+    "autoplayTime": {
+      "type": "number",
+      "default": 5
+    },
     "navigation": {
       "type": "boolean",
       "default": true
     },
     "pagination": {
+      "type": "boolean",
+      "default": true
+    },
+    "slidesPerView": {
+      "type": "number",
+      "default": 1
+    },
+    "slidesPerMobile": {
+      "type": "number",
+      "default": 1
+    },
+    "slidesPerTablet": {
+      "type": "number",
+      "default": 1
+    },
+    "slidesPerDesktop": {
+      "type": "number",
+      "default": 1
+    },
+    "scrollbar": {
+      "type": "boolean",
+      "default": false
+    },
+    "loop": {
       "type": "boolean",
       "default": true
     }
@@ -47,7 +75,7 @@
     }
   },
   "textdomain": "wpe",
-  "version": "0.1.2",
+  "version": "0.0.1",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "render": "file:./render.php",

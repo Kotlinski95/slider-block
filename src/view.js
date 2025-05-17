@@ -12,7 +12,10 @@ document.addEventListener( 'DOMContentLoaded', () => {
 	}
 
 	// Loop through all sliders and assign Swiper object.
-	containers.forEach( ( element ) => {
+	containers.forEach((element) => {
+		console.log( 'SWIPER block INIT: ', element );
+		if ( !element.dataset.swiper ) return;
+		element.style.visibility = 'hidden';
 		// We could pass in some unique options here.
 		let options = {};
 
@@ -26,5 +29,6 @@ document.addEventListener( 'DOMContentLoaded', () => {
 
 		// Slider 🚀
 		SwiperInit( element, options );
+		element.style.visibility = 'visible';
 	} );
 } );

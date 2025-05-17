@@ -17,6 +17,7 @@ import {
 	PanelBody,
 	PanelRow,
 	ToggleControl,
+	RangeControl,
 } from '@wordpress/components';
 import { useRefEffect } from '@wordpress/compose';
 import { useSelect, useDispatch, select, subscribe } from '@wordpress/data';
@@ -35,9 +36,9 @@ import {
 } from './constants';
 import { SwiperInit } from './swiper-init';
 import './editor.scss';
-import PLACEHOLDER_IMG_1 from './assets/image1.jpg';
-import PLACEHOLDER_IMG_2 from './assets/image2.jpg';
-import PLACEHOLDER_IMG_3 from './assets/image3.jpg';
+import PLACEHOLDER_IMG_1 from './assets/image1.webp';
+import PLACEHOLDER_IMG_2 from './assets/image2.webp';
+import PLACEHOLDER_IMG_3 from './assets/image3.webp';
 
 /**
  * Slider Toolbar - '+ Add a Slide'
@@ -152,7 +153,8 @@ const Slider = memo( ( { clientId, attributes, innerBlocksProps } ) => {
 			</BlockControls>
 
 			<div className="swiper" ref={ sliderRef }>
-				<div { ...innerBlocksProps } />
+				<div {...innerBlocksProps} />
+
 			</div>
 
 			<ButtonBlockAppender
@@ -276,6 +278,107 @@ export default function Edit( { attributes, setAttributes } ) {
 							}
 							help={ __(
 								'“Pagination” will display dots along the bottom for user to click through slides.'
+							) }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<RangeControl
+							label={ __( 'Autoplay Time (seconds)', 'wpe' ) }
+							value={ attributes.autoplayTime }
+							onChange={ ( value ) =>
+								setAttributes( { autoplayTime: value } )
+							}
+							min={ 1 }
+							max={ 10 }
+							help={ __(
+								'Set the autoplay interval in seconds.',
+								'wpe'
+							) }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<RangeControl
+							label={ __( 'Slides Per View', 'wpe' ) }
+							value={ attributes.slidesPerView }
+							onChange={ ( value ) =>
+								setAttributes( { slidesPerView: value } )
+							}
+							min={ 1 }
+							max={ 5 }
+							help={ __(
+								'Set the number of slides visible at once.',
+								'wpe'
+							) }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<RangeControl
+							label={ __( 'Slides Per Mobile', 'wpe' ) }
+							value={ attributes.slidesPerMobile }
+							onChange={ ( value ) =>
+								setAttributes( { slidesPerMobile: value } )
+							}
+							min={ 1 }
+							max={ 5 }
+							help={ __(
+								'Set the number of slides visible on mobile devices.',
+								'wpe'
+							) }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<RangeControl
+							label={ __( 'Slides Per Tablet', 'wpe' ) }
+							value={ attributes.slidesPerTablet }
+							onChange={ ( value ) =>
+								setAttributes( { slidesPerTablet: value } )
+							}
+							min={ 1 }
+							max={ 5 }
+							help={ __(
+								'Set the number of slides visible on tablets.',
+								'wpe'
+							) }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<RangeControl
+							label={ __( 'Slides Per Desktop', 'wpe' ) }
+							value={ attributes.slidesPerDesktop }
+							onChange={ ( value ) =>
+								setAttributes( { slidesPerDesktop: value } )
+							}
+							min={ 1 }
+							max={ 5 }
+							help={ __(
+								'Set the number of slides visible on desktop devices.',
+								'wpe'
+							) }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<ToggleControl
+							label={ __( 'Scrollbar', 'wpe' ) }
+							checked={ attributes.scrollbar }
+							onChange={ ( value ) =>
+								setAttributes( { scrollbar: value } )
+							}
+							help={ __(
+								'Enable or disable the scrollbar.',
+								'wpe'
+							) }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<ToggleControl
+							label={ __( 'Loop', 'wpe' ) }
+							checked={ attributes.loop }
+							onChange={ ( value ) =>
+								setAttributes( { loop: value } )
+							}
+							help={ __(
+								'Enable or disable looping of slides.',
+								'wpe'
 							) }
 						/>
 					</PanelRow>
